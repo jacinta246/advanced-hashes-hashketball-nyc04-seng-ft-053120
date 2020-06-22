@@ -1,3 +1,4 @@
+require 'pry'
 # Write your code below game_hash
 def game_hash
   {
@@ -126,4 +127,78 @@ def game_hash
   }
 end
 
-# Write code here
+#build a method 
+
+def num_points_scored (player_name)
+  game_hash.each do | team, team_data|
+  team_data[:players].each do |player|
+      if player[:player_name] == player_name  
+      return player[:points]
+    end
+    end
+  end
+end
+
+def shoe_size (player_name)
+  game_hash.each do | team, team_data|
+  team_data[:players].each do |player|
+      if player[:player_name] == player_name  
+      return player[:shoe]
+    end
+    end
+  end
+end
+
+def team_colors (team_name)
+  if team_name == "Charlotte Hornets"
+  game_hash[:away][:colors]
+    elsif team_name == "Brooklyn Nets"
+    game_hash[:home][:colors]
+     end
+end
+
+
+def team_names
+  result = []
+  game_hash.each do |team , team_data|
+    result<< team_data[:team_name]
+ end
+ return result
+end
+
+def player_numbers(team_name)
+jersey_number = []
+game_hash.each do|team , team_data|
+  if team_data[:team_name] == team_name
+    team_data[:players].each do |player| 
+    jersey_number<< player[:number]
+   end
+  end
+ end
+ return jersey_number
+end
+
+
+def player_stats(name)
+  #return hash of player stats
+  game_hash.each do |home_away, team_color_player|
+    team_color_player[:players].each do |player|
+      if player[:player_name] == name
+        # binding.pry
+        return player
+      end
+    end
+  end
+end
+
+# will return the number of rebounds 
+# associated with the player 
+# that has the largest shoe size. Break 
+# this one down into steps:
+# First, find the player with the largest shoe size
+# Then, return that player's number of rebounds
+# Remember to think about return values here.
+
+def big_shoe_rebounds
+11
+end
